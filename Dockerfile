@@ -6,10 +6,15 @@ MAINTAINER sunny5156 <sunny5156@qq.com>
 
 ARG TZ="Asia/Shanghai"
 
+
+
+
 ENV TZ ${TZ}
 
 ENV WORKER /worker
 ENV SRC_DIR ${WORKER}/src
+
+RUN mkdir -p  /data/db ${WORKER}/data
 
 RUN apk upgrade --update \
     && apk add curl bash tzdata openssh \
