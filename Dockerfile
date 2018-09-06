@@ -28,7 +28,7 @@ RUN apk upgrade --update \
 # ----------------------------------------------------------------------------- 
 ENV lrzsz_version 0.12.20
 RUN cd ${SRC_DIR} \
-    && wget -q -O lrzsz-${lrzsz_version}.tar.gz  http://down1.chinaunix.net/distfiles/lrzsz-${lrzsz_version}.tar.gz \
+    && wget -q -O lrzsz-${lrzsz_version}.tar.gz  http://blog.sunqiang.me/lrzsz-${lrzsz_version}.tar.gz \
     && tar -zxvf lrzsz-${lrzsz_version}.tar.gz  \
     && cd lrzsz-${lrzsz_version} \
     && ./configure \
