@@ -11,6 +11,8 @@ ENV TZ ${TZ}
 ENV WORKER /worker
 ENV SRC_DIR ${WORKER}/src
 
+RUN mkdir -p  /data/db ${WORKER}/data ${SRC_DIR}
+
 RUN apk upgrade --update \
     && apk add curl bash tzdata openssh \
     && ln -sf /usr/share/zoneinfo/${TZ} /etc/localtime \
