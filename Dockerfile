@@ -37,7 +37,7 @@ RUN cd ${SRC_DIR} \
     && ln -s /usr/local/bin/lrz /usr/bin/rz \
 	&& ln -s /usr/local/bin/lsz /usr/bin/sz
     
-RUN apk add --no-cache git make musl-dev go mongodb 
+RUN apk add --no-cache git make musl-dev 
 
 ADD shell/.bash_profile /root/
 ADD shell/.bashrc /root/
