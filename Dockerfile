@@ -56,16 +56,7 @@ RUN cd ${SRC_DIR} \
     && wget -q -O nginx-${nginx_version}.tar.gz  https://nginx.org/download/nginx-${nginx_version}.tar.gz \
 	&& tar -zxvf nginx-${nginx_version}.tar.gz \
 	&& cd ${SRC_DIR}/nginx-${nginx_version} \
-	&& ./configure \
-	--with-http_ssl_module \
-	--with-http_stub_status_module \
-	--with-http_gzip_static_module \
-	--with-stream \
-	--prefix=/usr/nginx \
-	--conf-path=/etc/nginx
-	--http-log-path=/var/log/nginx/access.log \
-	--error-log-path=/var/log/nginx/error.log \
-	--sbin-path=/usr/local/sbin/nginx \
+	&& ./configure  --with-http_ssl_module  --with-http_stub_status_module  --with-http_gzip_static_module  --with-stream  --prefix=/usr/nginx --conf-path=/etc/nginx --http-log-path=/var/log/nginx/access.log --error-log-path=/var/log/nginx/error.log --sbin-path=/usr/local/sbin/nginx \
 	&& make \
 	&& make install \
 	&& apk del build-base \
