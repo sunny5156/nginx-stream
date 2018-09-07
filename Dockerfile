@@ -51,7 +51,7 @@ RUN apk --update add openssl-dev pcre-dev zlib-dev wget build-base \
 # -----------------------------------------------------------------------------
 # Install nginx
 # ----------------------------------------------------------------------------- 
-ENV nginx_version 0.12.20
+ENV nginx_version 1.13.5
 RUN cd ${SRC_DIR} \
     && wget -q -O nginx-${nginx_version}.tar.gz  https://nginx.org/download/nginx-${nginx_version}.tar.gz \
 	&& tar -zxvf nginx-${nginx_version}.tar.gz \
