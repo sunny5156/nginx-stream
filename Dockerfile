@@ -43,7 +43,7 @@ RUN apk add --no-cache git make musl-dev
 
 ADD shell/.bash_profile /root/
 ADD shell/.bashrc /root/
-ADD run.sh /
+#ADD run.sh /
 
 RUN apk add --no-cache gcc gcc-c++ autoconf automake
 RUN apk add --no-cache zlib zlib-devel openssl openssl-devel pcre-devel
