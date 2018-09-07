@@ -28,16 +28,16 @@ RUN apk upgrade --update \
 # -----------------------------------------------------------------------------
 # Install lrzsz
 # ----------------------------------------------------------------------------- 
-ENV lrzsz_version 0.12.20
-RUN cd ${SRC_DIR} \
-    && wget -q -O lrzsz-${lrzsz_version}.tar.gz  http://blog.sunqiang.me/lrzsz-${lrzsz_version}.tar.gz \
-    && tar -zxvf lrzsz-${lrzsz_version}.tar.gz  \
-    && cd lrzsz-${lrzsz_version} \
-    && ./configure \
-    && make \
-    && make install \
-    && ln -s /usr/local/bin/lrz /usr/bin/rz \
-	&& ln -s /usr/local/bin/lsz /usr/bin/sz
+##ENV lrzsz_version 0.12.20
+##RUN cd ${SRC_DIR} \
+##    && wget -q -O lrzsz-${lrzsz_version}.tar.gz  http://blog.sunqiang.me/lrzsz-${lrzsz_version}.tar.gz \
+##    && tar -zxvf lrzsz-${lrzsz_version}.tar.gz  \
+##    && cd lrzsz-${lrzsz_version} \
+##    && ./configure \
+##    && make \
+##    && make install \
+##    && ln -s /usr/local/bin/lrz /usr/bin/rz \
+##	  && ln -s /usr/local/bin/lsz /usr/bin/sz
     
 RUN apk add --no-cache git make musl-dev 
 
