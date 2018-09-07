@@ -45,8 +45,11 @@ ADD shell/.bash_profile /root/
 ADD shell/.bashrc /root/
 #ADD run.sh /
 
-RUN apk add --no-cache gcc  autoconf automake
-RUN apk add --no-cache zlib zlib-devel openssl openssl-devel pcre-devel
+RUN apk --update --no-cache add geoip geoip-dev pcre \
+		&& libxslt gd openssl-dev pcre-dev zlib-dev build-base \
+		&& linux-headers libxslt-dev gd-dev openssl-dev \
+		&& libstdc++ libgcc patch logrotate supervisor inotify-tools \
+		&& rm -rf /var/cache/apk/*
 
 # -----------------------------------------------------------------------------
 # Install nginx
