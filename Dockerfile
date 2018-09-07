@@ -45,10 +45,7 @@ ADD shell/.bash_profile /root/
 ADD shell/.bashrc /root/
 #ADD run.sh /
 
-RUN apk --update --no-cache add geoip geoip-dev pcre \
-		&& gd openssl-dev pcre-dev zlib-dev build-base \
-		&& linux-headers  gd-dev openssl-dev \
-		&& libstdc++ libgcc patch logrotate supervisor inotify-tools \
+RUN apk --update add openssl-dev pcre-dev zlib-dev wget build-base \
 		&& rm -rf /var/cache/apk/*
 
 # -----------------------------------------------------------------------------
@@ -57,21 +54,23 @@ RUN apk --update --no-cache add geoip geoip-dev pcre \
 ENV nginx_version 0.12.20
 RUN cd ${SRC_DIR} \
     && wget -q -O nginx-${nginx_version}.tar.gz  https://nginx.org/download/nginx-${nginx_version}.tar.gz \
-    && tar -zxvf nginx-${nginx_version}.tar.gz  \
-    && cd nginx-${nginx_version} \
-	&& ./configure --prefix=/usr/local \
-	&& --prefix=/etc/nginx \
-	&& --sbin-path=/usr/sbin/nginx \
-	&& --conf-path=/etc/nginx/nginx.conf \
-	&& --error-log-path=/var/log/nginx/error.log \
-	&& --http-log-path=/var/log/nginx/access.log \
-	&& --pid-path=/var/run/nginx.pid \
-	&& --lock-path=/var/run/nginx.lock \
-	&& --with-http_stub_status_module \
-	&& --with-http_gzip_static_module \
-	&& --with-stream \
+	&& tar -zxvf nginx-${nginx_version}.tar.gz \
+	&& cd ${SRC_DIR}/nginx-${nginx_version} \
+	&& ./configure \
+	--with-http_ssl_module \
+	--with-http_stub_status_module \
+	--with-http_gzip_static_module \
+	--with-stream \
+	--prefix=/usr/nginx \
+	--conf-path=/etc/nginx
+	--http-log-path=/var/log/nginx/access.log \
+	--error-log-path=/var/log/nginx/error.log \
+	--sbin-path=/usr/local/sbin/nginx \
 	&& make \
-	&& make install 
+	&& make install \
+	&& apk del build-base \
+	&& rm -rf /var/cache/apk/*
+	
 
 RUN mkdir -p /var/cache/nginx
 
