@@ -46,8 +46,8 @@ ADD shell/.bashrc /root/
 #ADD run.sh /
 
 RUN apk --update --no-cache add geoip geoip-dev pcre \
-		&& libxslt gd openssl-dev pcre-dev zlib-dev build-base \
-		&& linux-headers libxslt-dev gd-dev openssl-dev \
+		&& gd openssl-dev pcre-dev zlib-dev build-base \
+		&& linux-headers  gd-dev openssl-dev \
 		&& libstdc++ libgcc patch logrotate supervisor inotify-tools \
 		&& rm -rf /var/cache/apk/*
 
