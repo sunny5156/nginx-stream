@@ -45,7 +45,7 @@ ADD shell/.bash_profile /root/
 ADD shell/.bashrc /root/
 #ADD run.sh /
 
-RUN apk add --no-cache gcc gcc-c++ autoconf automake
+RUN apk add --no-cache gcc  autoconf automake
 RUN apk add --no-cache zlib zlib-devel openssl openssl-devel pcre-devel
 
 # -----------------------------------------------------------------------------
